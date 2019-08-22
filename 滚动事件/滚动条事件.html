@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>然然最棒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            margin: 50px 0 0 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script>
+    var box = document.getElementById('box');
+    //ie/chrome
+    box.addEventListener('mousewheel', scrollMove);
+    //firfox
+    box.addEventListener('DOMMouseScroll', scrollMove);
+    var flag = false;
+
+    function scrollMove(event) {
+        if (event.wheelDelta) {
+            if (event.wheelDelta > 0) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+
+        } else if (event.detail) {
+            if (event.detail > 0) {
+                flag = false;
+            } else {
+                flag = true;
+            }
+        }
+
+        if (flag) {
+            box.style.height = box.offsetHeight - 10 + 'px';
+        } else {
+            box.style.height = box.offsetHeight + 10 + 'px';
+        }
+
+        event.preventDefault();
+        return false;
+    }
+
+</script>
+
+</body>
+</html>
